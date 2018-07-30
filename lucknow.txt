@@ -1,0 +1,11 @@
+City: Lucknow
+Timings: 12-3pm, 3-6pm, 6-9pm, 9-12pm
+Types of seats: Platinum, Gold, Silver
+Screen 1:
+	Movie: The Pursuit of Happiness
+Screen 2:
+	Movie: The Shawshank Redemption
+Screen 3:
+	Movie: The Dark Knight Rises
+Screen 4:
+	Movie: Zindagi Na Milegi Dobara

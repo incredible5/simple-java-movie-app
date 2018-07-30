@@ -1,0 +1,11 @@
+City: Lucknow
+Timings: 12-3pm, 3-6pm, 6-9pm, 9-12pm
+Types of seats: Platinum, Gold, Silver
+Screen 1:
+	Movie: Ghanjni
+Screen 2:
+	Movie: Sanam teri kasam
+Screen 3:
+	Movie: Bahubali 2
+Screen 4:
+	Movie: Robot 2.0
