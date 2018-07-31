@@ -9,7 +9,7 @@ class Movies
 	public static void main(String[] args)
 	{
 		Boolean condition = false;
-		do
+		do //Asks user for "user"or "admin" mode. Loops again and again untill valid input is given
 		{
 			System.out.printf("Select the mode:\n1-Admin (Press 1 for this option)\n2-User (press 2 for this option)\n3- Exit (press 3 to exit)\n");
 			try
@@ -31,6 +31,7 @@ class Movies
 			catch(InputMismatchException e)
 			{
 				condition = true;
+				in.nextLine();//to consume the character in buffer
 				System.out.printf("\nPlease select a valid choice!\n\n");
 			}
 		}while(condition);
@@ -39,7 +40,7 @@ class Movies
 	{
 		Admin am = new Admin();
 		System.out.printf("\nEnter the password:\n");
-		in.nextLine();
+		in.nextLine();//to consume the character in buffer
 		String pass = in.nextLine();
 		if(pass.endsWith(am.getPassword()))
 			am.msg();
@@ -59,7 +60,7 @@ class Admin
 		return this.password;
 	}
 	Scanner in = new Scanner(System.in);
-	void msg()
+	void msg() //Prompts for selscting city. Loops until valid input is given
 	{
 		Boolean condition = false;
 		do
@@ -88,7 +89,7 @@ class Admin
 		}while(condition);
 	}
 
-	void details(int ct)
+	void details(int ct) //Reads the file which stores the movie details in a file as a database
 	{
 		String city = "lucknow.txt";
 		if(ct == 2)
@@ -113,11 +114,11 @@ class Admin
 		}
 	}
 
-	void edit(String inf, String city)
+	void edit(String inf, String city) //Modifies the existing string of selected movie detail and re-writes whole data back into the file
 	{
 		System.out.printf("\nEnter the screen number:\n");
 		int screen = in.nextInt();
-		in.nextLine();
+		in.nextLine(); //to consume the character in buffer
 		System.out.printf("\nEnter the new movie:\n");
 		String new_movie = in.nextLine();
 		String new_info = "";
@@ -126,7 +127,7 @@ class Admin
 		else
 			new_info = inf.substring(0,(inf.indexOf("Screen "+(screen++)))+19) + new_movie + "\n" + inf.substring(inf.indexOf("Screen "+screen));
 		System.out.println(new_info);
-		System.out.println("Do you want to save this in database, this will be irrevocable? Press e to save");
+		System.out.println("Do you want to save this in database, this will be irrevocable? Press e to save or any other acceptable character to exit without saving");
 		char c = in.next().charAt(0);
 		if(c == 'e')
 		{
@@ -182,7 +183,7 @@ class User
 			}
 		}while(condition);
 	}
-	void show(int ct)
+	void show(int ct) //Displays the movies on different screens based on the city of preference
 	{
 		String info = "";
 		user_city = "Lucknow";
@@ -207,7 +208,7 @@ class User
 		System.out.println("Press \"b\" to book tickets or any other acceptable key to exit\n");
 		char lc = in.next().charAt(0);
 		in.nextLine();
-		if(lc == 'b')
+		if(lc == 'b') //Generate a "ticket" string of the selected choices by the user and creates a file named as username and writes ticket data into it
 		{
 			System.out.println("\nEnter your name: ");
 			user_name = in.nextLine();
@@ -231,7 +232,7 @@ class User
 				default : user_time = "9pm - 12pm";
 							break;
 			}
-			ticket = " Name: " + user_name + "\n City: " + user_city + "\n Movie:" + user_movie + "\n Time: " +user_time;
+			ticket = " Name: " + user_name + "\n City: " + user_city + "\n Movie:" + user_movie + " Time: " +user_time;
 			try
 			{
 				File fl = new File("C:/Users/LENOVO/Desktop/Movie/"+user_name+".txt");
@@ -248,7 +249,7 @@ class User
 			{
 				System.out.println("ERROR!");
 			}
-			System.out.printf("Your ticket:\n%s\n\n",ticket);
+			System.out.printf("\n\nYour ticket:\n%s\n\n",ticket);
 		}
 	}
 }
